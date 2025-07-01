@@ -4,7 +4,7 @@ import { Resend } from 'resend';
 import { ContactEmailTemplate } from './email-template';
 
 const resend = new Resend(
-  process.env.RESEND_API_KEY || 're_KzMqpp8u_6EhC4CzY9SGhYSqoveNwz4wx'
+  process.env.RESEND_API_KEY
 );
 
 const ContactSchema = z.object({
