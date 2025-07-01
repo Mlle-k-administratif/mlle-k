@@ -24,7 +24,7 @@ export async function sendContactEmail(data: ContactFormValues) {
   }
   try {
     const res = await resend.emails.send({
-      from: 'Contact Form <noreply@tuumagency.com>',
+      from: 'Contact Form <noreply@mllek.fr>',
       to: [data.to],
       subject: `New Contact Form Submission from ${data.name}`,
       react: ContactEmailTemplate({ ...data }),
