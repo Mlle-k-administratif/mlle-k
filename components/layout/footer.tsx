@@ -32,6 +32,17 @@ export default async function Footer() {
 
   const { about, socialLinks, legalLinks, information } = data;
 
+  // Données par défaut si information n'existe pas
+  const defaultInformation = {
+    contactInfo: {
+      email: 'contact@mllek.com',
+      phone: '+33 1 23 45 67 89',
+      location: 'Paris, France'
+    }
+  };
+
+  const contactInfo = information?.contactInfo || defaultInformation.contactInfo;
+
   return (
     <Container
       className="md:mt-16 sm:px-0 px-0"
@@ -92,23 +103,23 @@ export default async function Footer() {
                     />
                     <div className="mb-3 flex gap-1">
                       <span className="font-medium">Basé à</span>
-                      <address>{information.contactInfo.location}</address>
+                      <address>{contactInfo.location}</address>
                     </div>
                   </li>
                   <li className="flex items-center gap-2">
                     <Phone className="w-5 h-5 text-primary" aria-hidden="true" />
                     <Link
-                      href={`tel:${information.contactInfo.phone}`}
+                      href={`tel:${contactInfo.phone}`}
                       className="hover:text-white">
-                      {information.contactInfo.phone}
+                      {contactInfo.phone}
                     </Link>
                   </li>
                   <li className="flex items-center gap-2">
                     <Mail className="w-5 h-5 text-primary" aria-hidden="true" />
                     <Link
-                      href={`mailto:${information.contactInfo.email}`}
+                      href={`mailto:${contactInfo.email}`}
                       className="hover:text-white">
-                      {information.contactInfo.email}
+                      {contactInfo.email}
                     </Link>
                   </li>
                 </ul>

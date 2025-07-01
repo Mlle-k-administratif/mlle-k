@@ -36,6 +36,22 @@ export default async function ContactPage() {
 
   const { hero, information } = data[0];
 
+  // Données par défaut si information n'existe pas
+  const defaultInformation = {
+    contactInfo: {
+      email: 'contact@mllek.com',
+      phone: '+33 1 23 45 67 89',
+      location: 'Paris, France'
+    },
+    availability: {
+      weekdays: 'Lundi - Vendredi: 9h00 - 18h00',
+      weekends: 'Samedi - Dimanche: Sur rendez-vous'
+    }
+  };
+
+  const contactInfo = information?.contactInfo || defaultInformation.contactInfo;
+  const availability = information?.availability || defaultInformation.availability;
+
   return (
     <Container className="flex flex-col min-h-screen pt-10">
       {/* Hero Section */}
@@ -75,26 +91,26 @@ export default async function ContactPage() {
               </h2>
               <div className="mb-3">
                 <span className="text-primary font-medium block">Email</span>
-                <Link href={`mailto:${information.contactInfo.email}`}>
-                  {information.contactInfo.email}
+                <Link href={`mailto:${contactInfo.email}`}>
+                  {contactInfo.email}
                 </Link>
               </div>
               <div className="mb-3">
                 <span className="text-primary font-medium block">Phone</span>
-                <Link href={`tel:${information.contactInfo.phone}`}>
-                  {information.contactInfo.phone}
+                <Link href={`tel:${contactInfo.phone}`}>
+                  {contactInfo.phone}
                 </Link>
               </div>
               <div className="mb-3">
                 <span className="text-primary font-medium">Basé à</span>
-                <address>{information.contactInfo.location}</address>
+                <address>{contactInfo.location}</address>
               </div>
               <div>
                 <span className="text-primary font-medium">Disponibilités</span>
                 <div>
-                  {information.availability.weekdays}
+                  {availability.weekdays}
                   <br />
-                  {information.availability.weekends}
+                  {availability.weekends}
                 </div>
               </div>
             </CardContent>
@@ -103,7 +119,7 @@ export default async function ContactPage() {
 
         {/* Contact Form */}
         <SlideIn direction="right" delay={0.4}>
-          <ContactForm to={information.contactInfo.email} />
+          <ContactForm to={contactInfo.email} />
         </SlideIn>
       </section>
 

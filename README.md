@@ -67,7 +67,13 @@ NEXT_PUBLIC_SANITY_API_VERSION=2025-05-25
 SANITY_API_TOKEN=your-api-token
 ```
 
-4. **Démarrer le serveur de développement**
+4. **Initialiser les données Sanity (optionnel)**
+```bash
+pnpm init-sanity
+```
+Cette commande crée les documents par défaut nécessaires (information, footer).
+
+5. **Démarrer le serveur de développement**
 ```bash
 pnpm dev
 ```
@@ -175,6 +181,7 @@ pnpm lint         # Linting ESLint
 pnpm sanity dev   # Sanity Studio
 pnpm sanity build # Build Sanity Studio
 pnpm sanity deploy # Déployer Sanity Studio
+pnpm init-sanity  # Initialiser les données par défaut
 ```
 
 ## 📚 Documentation
