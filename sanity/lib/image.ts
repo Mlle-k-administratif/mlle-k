@@ -13,7 +13,7 @@ export const urlForImage = (source: SanityImageSource) => {
 export function buildImageUrl(imageRef: string, width: number = 1200, height: number = 630): string {
   if (!imageRef) return '';
   
-  return urlForImage(imageRef)
+  return builder.image(imageRef)
     .width(width)
     .height(height)
     .fit('crop')

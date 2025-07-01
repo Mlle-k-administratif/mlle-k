@@ -1,4 +1,3 @@
-import { client } from './client';
 import { buildImageUrl } from './image';
 import { sanityFetch } from './live';
 
@@ -55,7 +54,7 @@ export async function getAboutSEO(): Promise<SEOData | null> {
   }`;
 
   try {
-    const result = await client.fetch(query);
+    const { data: result } = await sanityFetch({ query });
     return result?.seo || null;
   } catch (error) {
     console.error('Error fetching about SEO data:', error);
